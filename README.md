@@ -1,32 +1,19 @@
-# React + TypeScript + Vite
+# Rick and Morty Kanban
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Frontend-only Kanban board (To Do, Doing, Done). Each card is assigned a Rick and Morty character from the public GraphQL API.
 
-Currently, two official plugins are available:
+## Running locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Requires Node (version in `.nvmrc`) and Bun.
 
-## React Compiler
+    bun install
+    bun run dev        # http://localhost:5180
+    bun run check      # lint + types + tests
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Use `bun run test`, not `bun test` (that starts Bun's own runner, not Vitest).
 
-## Expanding the Oxlint configuration
+On WSL, keep the repo under `~/`, not `/mnt/c/`. If the Windows browser can't reach the dev server, run `bun run dev --host`.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Decisions
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+See [docs/decisions](docs/decisions/) (MADR format).
