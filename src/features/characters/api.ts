@@ -16,12 +16,19 @@ const SEARCH_CHARACTERS = gql`
   }
 `;
 
-export type Character = { id: string; name: string; image: string; species: string };
+export type Character = {
+  id: string;
+  name: string;
+  image: string;
+  species: string;
+};
 
 type SearchResponse = { characters: { results: Character[] | null } };
 
 export async function searchCharacters(name: string): Promise<Character[]> {
-  const data = await request<SearchResponse>(API_URL, SEARCH_CHARACTERS, { name });
+  const data = await request<SearchResponse>(API_URL, SEARCH_CHARACTERS, {
+    name,
+  });
   return data.characters.results ?? [];
 }
 
